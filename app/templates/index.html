@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Geo's Slop Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">GS</div>
+        <div class="brand-text">
+          <div class="brand-title">Geo's Slop Shop</div>
+          <div class="brand-subtitle">Bowls of slop for hungry heroes</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#menu">Menu</a>
+        <a href="#story">Story</a>
+        <a href="#slopline">Slopline</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <div class="order-bar">
+        <span class="order-label">Bowl Count</span>
+        <span class="order-count" id="order-count">0</span>
+        <button class="order-btn" id="order-now">Order Now</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-content reveal delay-1">
+          <div class="eyebrow">Freshly ladled. Loudly loved.</div>
+          <h1>Slop so good it silences the growl.</h1>
+          <p>
+            Geo serves up bold bowls of savory slop, slow-stirred all morning and
+            plated with crunchy toppers. Come hungry. Leave legendary.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" data-scroll="#menu">See the Slop</button>
+            <button class="ghost" data-scroll="#visit">Find the Shop</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <span class="stat-number">14</span>
+              <span class="stat-label">Slop Styles</span>
+            </div>
+            <div>
+              <span class="stat-number">6am</span>
+              <span class="stat-label">First Ladle</span>
+            </div>
+            <div>
+              <span class="stat-number">99%</span>
+              <span class="stat-label">Bowl Loyalty</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card reveal delay-2">
+          <div class="card-top">
+            <span class="badge">Daily Slop</span>
+            <span class="badge light">Limited</span>
+          </div>
+          <h3>Hearthfire Maple Mash</h3>
+          <p>
+            Slow-roasted root slop, cedar-smoked salt, maple ribbon, and a crackle
+            of black pepper crunch.
+          </p>
+          <div class="card-info">
+            <div>
+              <span class="info-label">Heat</span>
+              <span class="info-value">Gentle</span>
+            </div>
+            <div>
+              <span class="info-label">Texture</span>
+              <span class="info-value">Thick + Crispy</span>
+            </div>
+          </div>
+          <button class="primary full" data-add="Hearthfire Maple Mash">Add to Bowl</button>
+        </div>
+        <div class="hero-visual reveal delay-3">
+          <div class="bowl"></div>
+          <div class="steam"></div>
+          <div class="steam two"></div>
+          <div class="steam three"></div>
+        </div>
+      </section>
+
+      <section class="menu" id="menu">
+        <div class="section-title reveal">
+          <h2>Geo's Slop Menu</h2>
+          <p>Pick a bowl, choose a mood, and stack the toppers high.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <div class="menu-header">
+              <h3>Brass City Beef Slop</h3>
+              <span class="price">$9</span>
+            </div>
+            <p>Rich beef slop with charred onion ribbon and toasted rye crumble.</p>
+            <div class="menu-tags">
+              <span>Hearty</span>
+              <span>Smoky</span>
+            </div>
+            <button class="ghost full" data-add="Brass City Beef Slop">Add to Bowl</button>
+          </article>
+          <article class="menu-card">
+            <div class="menu-header">
+              <h3>Garden Glow Slop</h3>
+              <span class="price">$8</span>
+            </div>
+            <p>Green herb slop with roasted garlic oil and sunflower crunch.</p>
+            <div class="menu-tags">
+              <span>Bright</span>
+              <span>Vegan</span>
+            </div>
+            <button class="ghost full" data-add="Garden Glow Slop">Add to Bowl</button>
+          </article>
+          <article class="menu-card">
+            <div class="menu-header">
+              <h3>Midnight Chili Slop</h3>
+              <span class="price">$10</span>
+            </div>
+            <p>Black bean slop with ember oil, lime zest, and crispy shallots.</p>
+            <div class="menu-tags">
+              <span>Spicy</span>
+              <span>Bold</span>
+            </div>
+            <button class="ghost full" data-add="Midnight Chili Slop">Add to Bowl</button>
+          </article>
+          <article class="menu-card">
+            <div class="menu-header">
+              <h3>Creamy Docksider</h3>
+              <span class="price">$9</span>
+            </div>
+            <p>Sea-salt slop with lemon zest and a tide of buttered crumbs.</p>
+            <div class="menu-tags">
+              <span>Coastal</span>
+              <span>Silky</span>
+            </div>
+            <button class="ghost full" data-add="Creamy Docksider">Add to Bowl</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="story" id="story">
+        <div class="story-card reveal delay-1">
+          <h2>Geo's Story</h2>
+          <p>
+            Geo learned the craft at a traveling carnival, stirring vats of slop
+            for late-night crews. Now the shop is a cozy, loud kitchen where every
+            bowl gets a slow stir, a loud laugh, and a signature swirl.
+          </p>
+          <div class="story-points">
+            <div>
+              <span class="dot"></span>
+              <span>Slow-simmered base slop, made daily.</span>
+            </div>
+            <div>
+              <span class="dot"></span>
+              <span>Crunch toppers toasted in-house.</span>
+            </div>
+            <div>
+              <span class="dot"></span>
+              <span>Big bowls, bigger energy.</span>
+            </div>
+          </div>
+        </div>
+        <div class="story-visual reveal delay-2">
+          <div class="poster">
+            <div class="poster-top">Slopline Forecast</div>
+            <div class="poster-body">
+              <div>
+                <span class="forecast-temp">78%</span>
+                <span class="forecast-label">Chance of seconds</span>
+              </div>
+              <div class="forecast-row">
+                <span>Thick</span>
+                <span>+ Crunch</span>
+                <span>+ Steam</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slopline" id="slopline">
+        <div class="section-title reveal">
+          <h2>Join the Slopline</h2>
+          <p>Get weekly slop drops, secret toppers, and early bowl invites.</p>
+        </div>
+        <form class="slop-form">
+          <input type="text" placeholder="Name" aria-label="Name" />
+          <input type="email" placeholder="Email" aria-label="Email" />
+          <button class="primary" type="button">Get on the List</button>
+        </form>
+        <div class="slop-badges">
+          <span>Hand-stirred</span>
+          <span>No shortcuts</span>
+          <span>Always hot</span>
+        </div>
+      </section>
+
+      <section class="visit" id="visit">
+        <div class="visit-card reveal delay-1">
+          <h2>Find the Shop</h2>
+          <p>
+            Dockside Alley 14, Bowl District. Open daily from sunrise to last
+            ladle.
+          </p>
+          <div class="visit-info">
+            <div>
+              <span class="info-label">Hours</span>
+              <span class="info-value">6:00a - 9:00p</span>
+            </div>
+            <div>
+              <span class="info-label">Call</span>
+              <span class="info-value">(555) 010-2211</span>
+            </div>
+            <div>
+              <span class="info-label">Pickup</span>
+              <span class="info-value">Order ahead, walk right in.</span>
+            </div>
+          </div>
+          <button class="ghost" data-scroll="#top">Back to Top</button>
+        </div>
+        <div class="visit-map reveal delay-2">
+          <div class="map-grid"></div>
+          <div class="map-pin"></div>
+          <div class="map-tag">Geo's Slop Shop</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Geo's Slop Shop. Stirring the city since 2014.</div>
+      <div class="footer-links">
+        <span>Fresh slop. Loud hearts.</span>
+        <span>Follow @geoslop</span>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast">Added to your bowl.</div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

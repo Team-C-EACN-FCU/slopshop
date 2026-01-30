@@ -1,0 +1,748 @@
+:root {
+  --cream: #f4efe6;
+  --clay: #c97b4b;
+  --ember: #b5482e;
+  --ink: #1f1c1a;
+  --sage: #7a8b6f;
+  --gold: #f0c36a;
+  --slate: #3f3832;
+  --fog: rgba(255, 255, 255, 0.6);
+  --shadow: 0 24px 60px rgba(32, 24, 18, 0.22);
+  --shadow-soft: 0 16px 40px rgba(32, 24, 18, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #fff3d7 0%, #f8f1e6 30%, #e7ddcd 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image: repeating-radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 7px);
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 8vw;
+  background: rgba(244, 239, 230, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(31, 28, 26, 0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  font-family: "Abril Fatface", serif;
+  font-size: 24px;
+  background: var(--ember);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+
+.brand-title {
+  font-family: "Abril Fatface", serif;
+  font-size: 22px;
+}
+
+.brand-subtitle {
+  font-size: 13px;
+  color: var(--slate);
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 500;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--ember);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.order-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+}
+
+.order-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+}
+
+.order-count {
+  font-weight: 700;
+  background: var(--gold);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.order-btn {
+  border: none;
+  background: var(--ember);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.1fr) minmax(240px, 0.8fr) minmax(240px, 0.9fr);
+  gap: 32px;
+  padding: 80px 8vw 60px;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-family: "Abril Fatface", serif;
+  font-size: clamp(36px, 5vw, 64px);
+  margin: 14px 0;
+}
+
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--gold);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary,
+.ghost {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.primary {
+  background: var(--ember);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(31, 28, 26, 0.2);
+}
+
+.primary.full,
+.ghost.full {
+  width: 100%;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.hero-stats div {
+  display: grid;
+  gap: 4px;
+}
+
+.stat-number {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.stat-label {
+  color: var(--slate);
+  font-size: 13px;
+}
+
+.hero-card {
+  background: #fff;
+  padding: 26px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -60px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(240, 195, 106, 0.4), transparent 70%);
+}
+
+.card-top {
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  background: var(--ember);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.light {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.card-info {
+  display: flex;
+  gap: 24px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.info-value {
+  font-weight: 600;
+}
+
+.hero-visual {
+  position: relative;
+  height: 320px;
+  display: grid;
+  place-items: center;
+}
+
+.bowl {
+  width: 240px;
+  height: 140px;
+  background: linear-gradient(180deg, #fff 0%, #f2e7d5 100%);
+  border-radius: 0 0 120px 120px;
+  border: 6px solid #f9f4ea;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.bowl::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(180deg, #c97b4b 0%, #a64e2f 100%);
+  border-radius: 999px;
+  box-shadow: inset 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.steam {
+  position: absolute;
+  width: 80px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid rgba(197, 170, 120, 0.4);
+  border-color: rgba(197, 170, 120, 0.4) transparent transparent transparent;
+  animation: steam 4s ease-in-out infinite;
+}
+
+.steam.two {
+  left: 40px;
+  animation-delay: 1s;
+  transform: scale(0.8);
+}
+
+.steam.three {
+  right: 40px;
+  animation-delay: 2s;
+  transform: scale(0.9);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.section-title h2 {
+  font-family: "Abril Fatface", serif;
+  font-size: clamp(28px, 4vw, 44px);
+  margin-bottom: 10px;
+}
+
+.menu {
+  padding: 40px 8vw 80px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.menu-card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: rise 0.8s ease both;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.menu-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.menu-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.menu-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.menu-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.price {
+  font-weight: 700;
+  background: var(--gold);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.menu-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.menu-tags span {
+  background: rgba(122, 139, 111, 0.15);
+  color: var(--sage);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.story {
+  padding: 20px 8vw 80px;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(240px, 0.7fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.story-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.story-card h2 {
+  font-family: "Abril Fatface", serif;
+  margin-top: 0;
+}
+
+.story-card p {
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.story-points {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.story-points div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ember);
+  display: inline-block;
+}
+
+.story-visual {
+  display: grid;
+  place-items: center;
+}
+
+.poster {
+  width: 100%;
+  background: linear-gradient(135deg, #2e2a26, #4a3f36);
+  color: #fff;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.poster-top {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.poster-body {
+  margin-top: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.forecast-temp {
+  font-size: 40px;
+  font-weight: 700;
+  display: block;
+}
+
+.forecast-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.forecast-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.forecast-row span {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.slopline {
+  padding: 20px 8vw 80px;
+  text-align: center;
+}
+
+.slop-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0 16px;
+}
+
+.slop-form input {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(31, 28, 26, 0.2);
+  font-size: 15px;
+  min-width: 220px;
+}
+
+.slop-badges {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.slop-badges span {
+  background: rgba(201, 123, 75, 0.12);
+  color: var(--ember);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.visit {
+  padding: 20px 8vw 100px;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(260px, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.visit-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 18px;
+}
+
+.visit-card h2 {
+  font-family: "Abril Fatface", serif;
+  margin: 0;
+}
+
+.visit-info {
+  display: grid;
+  gap: 12px;
+}
+
+.visit-map {
+  position: relative;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #f1e6d3, #e4d6c2);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(31, 28, 26, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 28, 26, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.4;
+}
+
+.map-pin {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background: var(--ember);
+  border-radius: 50% 50% 50% 0;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  box-shadow: 0 10px 20px rgba(180, 72, 46, 0.4);
+}
+
+.map-pin::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+}
+
+.map-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  font-weight: 600;
+}
+
+.footer {
+  padding: 26px 8vw 40px;
+  border-top: 1px solid rgba(31, 28, 26, 0.1);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--slate);
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #fff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal {
+  animation: rise 0.9s ease both;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+@keyframes steam {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .story,
+  .visit {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .order-bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
